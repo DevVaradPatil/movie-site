@@ -12,7 +12,6 @@ const Home = () => {
       Watch Now
       </button>
       <NavLink to='signup' className='mt-5'>SignUp</NavLink>
-      <NavLink to='login' className='mt-5'>Login</NavLink>
     </div>
   )
 }

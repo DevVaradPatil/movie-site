@@ -27,7 +27,7 @@ const Signup = () => {
 
           <div className='flex mt-6 gap-1'>
             <p className='text-primary-text'>Already have an account?</p>
-            <NavLink to= 'login' className='text-accent-primary'>LogIn</NavLink>
+            <NavLink to= '/login' className='text-accent-primary'>LogIn</NavLink>
           </div>
         </div>
       </div>

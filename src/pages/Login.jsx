@@ -22,7 +22,7 @@ const Login = () => {
 
           <div className='flex mt-7 gap-1'>
             <p className='text-primary-text'>To create new account</p>
-            <NavLink to='signup' className='text-accent-primary'>Sign Up</NavLink>
+            <NavLink to='/signup' className='text-accent-primary'>Sign Up</NavLink>
           </div>
         </div>
       </div>
