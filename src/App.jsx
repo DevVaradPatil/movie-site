@@ -8,7 +8,6 @@ import Signup from './pages/Signup'
 function App() {
 
   return (
-<<<<<<< HEAD
    <Router>
       <Navbar/>
       <Routes>
@@ -17,9 +16,6 @@ function App() {
         <Route path="/signup" element={<Signup/>} />
       </Routes>
    </Router>
-=======
-
->>>>>>> ea28ec7d897356add7f9f4d3dd9beefa8f60d0ee
   )
 }
 
