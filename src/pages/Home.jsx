@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <button className=' bg-button-primary-bg text-button-primary-text'>
       Watch Now
       </button>
+      <NavLink to='signup' className='mt-5'>SignUp</NavLink>
     </div>
   )
 }
