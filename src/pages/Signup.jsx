@@ -5,13 +5,13 @@ import { NavLink } from 'react-router-dom'
 
 const Signup = () => {
   return (
-    <div className='h-screen bg-center w-full relative' style={{ backgroundImage: `url(${back})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-      <div className='absolute w-full h-full top-0 left-0 z-10 bg-black/60 flex flex-col items-center'>
-      <div className='w-full flex items-center h-[120px] z-20'>
+    <div className='h-screen flex justify-center items-center bg-center w-full relative' style={{ backgroundImage: `url(${back})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+     <div className='absolute w-full h-full top-0 left-0 z-10 bg-black/60 flex flex-col justify-center items-center'>
+      <div className='w-full flex items-center absolute top-5 z-20'>
         <img className='w-[170px] ml-[10%]' src={logo} alt="" />
       </div>
 
-      <div className='bg-primary-bg h-[69%] w-[28%] p-[3%] rounded-md z-20'>
+      <div className='bg-primary-bg  w-[90%] max-w-md p-10 rounded-md z-20'>
         <div className='text-primary-text text-3xl ml font-medium text-center'>
           Create your account
         </div>
