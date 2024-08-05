@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getNowPlayingMovies } from '../utils/api';
+import CardContainer from '../components/CardContainer';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -32,15 +33,7 @@ const Home = () => {
       </button>
       <NavLink to='signup' className='mt-5'>SignUp</NavLink>
 
-      <div className='movie-list'>
-        {movies && movies.map(movie => (
-          <div key={movie.id} className='py-2'>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="" />
-            <h3>{movie.title}</h3>
-            <p>{movie.overview}</p>
-          </div>
-        ))}
-      </div>
+      <CardContainer/>
     </div>
   );
 }
