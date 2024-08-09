@@ -22,9 +22,9 @@ const CardContainer = () => {
 
   return (
     <div>
-        <div className='movie-list'>
+        <div className='movie-list flex flex-wrap justify-center items-center gap-2'>
         {movies && movies.map(movie => (
-            <Card key={movie.id} image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} title={movie.title}/>
+            <Card key={movie.id} image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} title={movie.title} year={movie.release_date} rating={movie.vote_average}/>
         ))}
       </div>
        
