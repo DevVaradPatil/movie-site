@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getNowPlayingMovies } from '../utils/api';
 import CardContainer from '../components/CardContainer';
+import Header from '../components/Header';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -23,16 +24,8 @@ const Home = () => {
   
 
   return (
-    <div className='bg-primary-bg h-screen text-primary-text'>
-      Home
-      <div className='w-full h-10 bg-secondary-bg text-secondary-text '>
-        see more
-      </div>
-      <button className='bg-button-primary-bg text-button-primary-text'>
-        Watch Now
-      </button>
-      <NavLink to='signup' className='mt-5'>SignUp</NavLink>
-
+    <div className='bg-primary-bg h-full min-h-screen text-primary-text'>
+      <Header/>
       <CardContainer/>
     </div>
   );
