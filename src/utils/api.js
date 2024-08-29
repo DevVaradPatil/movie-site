@@ -21,3 +21,37 @@ export const getNowPlayingMovies = async () => {
     return [];
   }
 };
+
+export const getPopularMovies = async () => {
+  const url = `${API_BASE_URL}/movie/popular?api_key=${API_KEY}&page=1`;
+  const options = {
+    method: 'GET',
+    headers: getHeaders()
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching now playing movies:', error);
+    return [];
+  }
+};
+
+export const getTopRatedMovies = async () => {
+  const url = `${API_BASE_URL}/movie/top_rated?api_key=${API_KEY}&page=1`;
+  const options = {
+    method: 'GET',
+    headers: getHeaders()
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching now playing movies:', error);
+    return [];
+  }
+};
