@@ -34,7 +34,7 @@ export const getPopularMovies = async () => {
     const data = await response.json();
     return data.results;
   } catch (error) {
-    console.error('Error fetching now playing movies:', error);
+    console.error('Error fetching popular movies:', error);
     return [];
   }
 };
@@ -51,7 +51,94 @@ export const getTopRatedMovies = async () => {
     const data = await response.json();
     return data.results;
   } catch (error) {
-    console.error('Error fetching now playing movies:', error);
+    console.error('Error fetching top rated movies:', error);
     return [];
   }
 };
+
+export const getUpcomingMovies = async () => {
+  const url = `${API_BASE_URL}/movie/upcoming?api_key=${API_KEY}&page=1`;
+  const options = {
+    method: 'GET',
+    headers: getHeaders()
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching upcoming movies:', error);
+    return [];
+  }
+};
+
+//Series
+export const getAiringSeries = async () => {
+  const url = `${API_BASE_URL}/tv/airing_today?api_key=${API_KEY}&page=1`;
+  const options = {
+    method: 'GET',
+    headers: getHeaders()
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching Airing series:', error);
+    return [];
+  }
+};
+
+export const getOnTheAirSeries = async () => {
+  const url = `${API_BASE_URL}/tv/airing_today?api_key=${API_KEY}&page=1`;
+  const options = {
+    method: 'GET',
+    headers: getHeaders()
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching on the air series:', error);
+    return [];
+  }
+};
+
+export const getPopularSeries = async () => {
+  const url = `${API_BASE_URL}/tv/popular?api_key=${API_KEY}&page=1`;
+  const options = {
+    method: 'GET',
+    headers: getHeaders()
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching Popular Series:', error);
+    return [];
+  }
+};
+
+export const getTopRatedSeries = async () => {
+  const url = `${API_BASE_URL}/tv/top_rated?api_key=${API_KEY}&page=1`;
+  const options = {
+    method: 'GET',
+    headers: getHeaders()
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching Top Rated Series:', error);
+    return [];
+  }
+};
+

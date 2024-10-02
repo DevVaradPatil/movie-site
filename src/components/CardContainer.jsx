@@ -9,6 +9,7 @@ const CardContainer = () => {
     const fetchMovies = async () => {
       const moviesData = await getNowPlayingMovies();
       setMovies(moviesData);
+      console.log(moviesData)
     };
 
     fetchMovies();
