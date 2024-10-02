@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../assets/netflix.png'
 import { Link } from 'react-router-dom';
 import { IoSearch, IoHeartOutline } from "react-icons/io5";
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
   return (
@@ -20,14 +21,7 @@ const Navbar = () => {
 
         {/* Search and Profile Icon */}
         <div className="flex items-center space-x-4">
-          <div className='flex items-center bg-tertiary-bg text-primary-text border border-border-primary rounded-md px-4 py-2'>
-          <input
-            type="text"
-            placeholder="Search..."
-            className="border-none outline-none bg-transparent focus:outline-none"
-          />
-          <IoSearch className="text-xl" />
-          </div>
+          <SearchBar/>
           <IoHeartOutline className="text-2xl cursor-pointer" />
           <div className="w-9 h-9 bg-accent-primary rounded-full flex items-center justify-center cursor-pointer hover:bg-accent-secondary">
             <span className="text-primary-text">P</span>

@@ -55,3 +55,20 @@ export const getTopRatedMovies = async () => {
     return [];
   }
 };
+
+export const searchMoviesByTitle = async (title) => {
+  const url = `${API_BASE_URL}/search/movie?query=${encodeURIComponent(title)}&include_adult=true&language=en-US&page=1&api_key=${API_KEY}`;
+  const options = {
+    method: 'GET',
+    headers: getHeaders()
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error searching movies by title:', error);
+    return [];
+  }
+};
