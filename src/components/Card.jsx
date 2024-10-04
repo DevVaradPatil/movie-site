@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ image, title, year, rating }) => {
   const rating_percent = Math.round(rating * 10);
@@ -14,7 +15,7 @@ const Card = ({ image, title, year, rating }) => {
   }
 
   return (
-    <div className="w-48 mb-8 transition-all duration-200 cursor-pointer hover:scale-105">
+    <Link to={`/movie/${title}`} className="w-48 mb-8 transition-all duration-200 cursor-pointer hover:scale-105">
       <div
         className="w-[170px] h-[240px] relative rounded-md"
         style={{
@@ -73,10 +74,12 @@ const Card = ({ image, title, year, rating }) => {
         </div>
       </div>
       <div>
-        <h1 className="text-primary-text mt-2 text-md font-medium truncate">{title}</h1>
+        <h1 className="text-primary-text mt-2 text-md font-medium truncate">
+          {title}
+        </h1>
         <h3 className="text-sm text-secondary-text">{year}</h3>
       </div>
-    </div>
+    </Link>
   );
 };
 

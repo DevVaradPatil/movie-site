@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Series from './pages/Series'
-// import MovieDetails from './pages/MovieDetails'
+import MovieDetails from './pages/MovieDetails'
 
 function MainApp() {
   const location = useLocation();
@@ -14,7 +14,7 @@ function MainApp() {
       {location.pathname !== '/login' && location.pathname !== '/signup' && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/movie" element={<MovieDetails />} /> */}
+        <Route path="/movie/:title" element={<MovieDetails />} />
         <Route path="/series" element={<Series />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
