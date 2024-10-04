@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies } from '../utils/api';
+import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies, getUpcomingMovies } from '../utils/api';
 import CardContainer from '../components/CardContainer';
 import Header from '../components/Header';
 import CategoryList from '../components/CategoryList';
@@ -8,6 +8,7 @@ import CategoryList from '../components/CategoryList';
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([])
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -15,6 +16,8 @@ const Home = () => {
       setPopularMovies(popularMoviesData);
       const topRatedMoviesData = await getTopRatedMovies();
       setTopRatedMovies(topRatedMoviesData)
+      const upcomingMoviesData = await getUpcomingMovies();
+      setUpcomingMovies(upcomingMoviesData)
     };
 
     fetchMovies();
@@ -34,6 +37,11 @@ const Home = () => {
       {
         topRatedMovies && (
           <CategoryList title={"Top Rated Movies"} movies={topRatedMovies}/>
+        )
+      }
+      {
+        upcomingMovies && (
+          <CategoryList title={"Upcoming Movies"} movies={upcomingMovies}/>
         )
       }
     </div>
