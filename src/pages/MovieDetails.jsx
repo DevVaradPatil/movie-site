@@ -5,6 +5,8 @@ import { FaStar, FaRegStar, FaStarHalfStroke } from "react-icons/fa6";
 import { searchMoviesByTitle } from "../utils/api";
 import { TbRating18Plus } from "react-icons/tb";
 import { MdOutlineChildCare } from "react-icons/md";
+import { BounceLoader } from "react-spinners";
+import Loader from "../components/Loader";
 
 const genreMap = {
   28: "Action",
@@ -83,69 +85,79 @@ const MovieDetails = () => {
     }
   }
 
-
   return (
     <div>
-      <div
-        className="w-full relative flex flex-col justify-center items-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://image.tmdb.org/t/p/original/${backdrop_path}')`,
-          height: "calc(100vh - 74px)",
-        }}
-      >
-        <div className="flex items-center gap-12 text-primary-text">
-          <img
-            className="h-[450px]"
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt="Movie Poster"
-          />
-          <div className="bg-transparent backdrop-blur-xl border-gray-300 border-2 w-[900px] h-[500px] rounded-lg">
-            <div className="mt-7 ml-7 mr-7 mb-2 flex items-center justify-between text-primary-text">
-              <h1 className="font-bold text-[40px]">{title}</h1>
-              <div className="flex gap-2 items-center">
-                <IoCalendarNumber fontSize={20} />
-                <p className="text-xl">{release_date}</p>
-              </div>
-            </div>
-
-            <div className="text-primary-text ml-7 mr-56">
-              <p className="text-xl">{overview}</p>
-            </div>
-
-            <div className="flex items-center justify-between mt-7">
-              <div className="ml-52 mt-7 flex flex-col items-center gap-2">
-                <div className="flex gap-2 text-primary-text">
-                  <p className="text-xl">Rating</p>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div
+          className="w-full relative flex flex-col justify-center items-center bg-cover bg-center"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://image.tmdb.org/t/p/original/${backdrop_path}')`,
+            minHeight: "calc(100vh - 74px)",
+          }}
+        >
+          <div className="flex items-center gap-12 text-primary-text">
+            <img
+              className="h-[450px]"
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              alt="Movie Poster"
+            />
+            <div className="bg-transparent backdrop-blur-xl border-gray-300 border-2 w-[900px] px-5 py-5 min-h-[500px] rounded-lg">
+              <div className="flex items-center justify-between text-primary-text">
+                <h1 className="font-bold text-[40px]">{title}</h1>
+                <div className="flex gap-2 items-center">
+                  <IoCalendarNumber fontSize={20} />
+                  <p className="text-xl">{release_date}</p>
                 </div>
-                <p className="text-3xl flex gap-1">{stars}</p>
               </div>
-              <div className="mr-52 mt-7 flex items-center flex-col gap-2 text-xl">
-                <p>{adult ? "Adult" : "General"}</p>
-                {adult ? (
-                  <TbRating18Plus fontSize={32} className="text-red-500" />
-                ) : (
-                    <MdOutlineChildCare fontSize={32} className="text-blue-500"/>
-                )}
+
+              <div className="text-primary-text">
+                <p className="text-xl">{overview}</p>
               </div>
-            </div>
-            <div className="flex mt-20 items-center justify-between">
-              <div className="ml-52 flex flex-col gap-2">
-                <div className="flex gap-2 text-primary-text">
-                  <IoFilm fontSize={25} />
-                  <p className="text-xl">Genre</p>
-                </div>
-                <div className="flex gap-2 flex-wrap w-full">
+
+              <div className="flex mt-8 items-center justify-between">
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2 text-primary-text">
+                    <IoFilm fontSize={25} />
+                    <p className="text-xl">Genre</p>
+                  </div>
+                  <div className="flex gap-2 flex-wrap w-full">
                     {genre_ids.map((genre, index) => (
-                        <div key={index} className="text-white bg-gray-500/50 rounded-full py-1 px-4">
-                            {genreMap[genre]}
-                        </div>
+                      <div
+                        key={index}
+                        className="text-white bg-gray-500/50 rounded-full py-1 px-4"
+                      >
+                        {genreMap[genre]}
+                      </div>
                     ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-around mt-4">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="flex gap-2 text-primary-text">
+                    <p className="text-xl">Rating</p>
+                  </div>
+                  <p className="text-3xl flex gap-1">{stars}</p>
+                </div>
+                <div className="flex items-center flex-col gap-2 text-xl">
+                  <p>{adult ? "Adult" : "General"}</p>
+                  {adult ? (
+                    <TbRating18Plus fontSize={32} className="text-red-500" />
+                  ) : (
+                    <MdOutlineChildCare
+                      fontSize={32}
+                      className="text-blue-500"
+                    />
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

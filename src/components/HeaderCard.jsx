@@ -1,6 +1,9 @@
 import React from "react";
 import { IoCalendarNumber, IoFilm } from "react-icons/io5";
 import { FaStar, FaRegStar, FaStarHalfStroke } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import { BounceLoader } from "react-spinners";
+
 
 const genreMap = {
   28: "Action",
@@ -44,7 +47,7 @@ const HeaderCard = ({ title, desc, rating, backdropUrl, date, genreId }) => {
   }
 
   return (
-    <div className="w-full relative rounded-[42px] flex justify-center items-center overflow-hidden">
+    <Link to={`/movie/${title}`} className="w-full relative rounded-[42px] flex justify-center items-center overflow-hidden">
       <img
         src={`https://image.tmdb.org/t/p/original/${backdropUrl}`}
         alt=""
@@ -68,7 +71,7 @@ const HeaderCard = ({ title, desc, rating, backdropUrl, date, genreId }) => {
           <p className="text-lg text-neutral-100 ">{desc}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

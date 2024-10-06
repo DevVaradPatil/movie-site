@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { IoSearch } from "react-icons/io5";
 import { searchMoviesByTitle } from "../utils/api";
+import { Link } from "react-router-dom";
 
 const genreMap = {
   28: "Action",
@@ -97,7 +98,7 @@ const SearchBar = () => {
           {searchResult.slice(0, 8).map((movie, index) => {
             const genre = genreMap[movie.genre_ids[0]] || "Movie";
             return (
-              <div
+              <Link to={`/movie/${movie.title}`}
                 key={index}
                 className="flex w-full gap-2 py-1 transition-all duration-200 hover:bg-gray-500/50 px-3 cursor-pointer"
               >
@@ -113,7 +114,7 @@ const SearchBar = () => {
                   <p className="text-sm">{genre}</p>
                   <p className="text-sm text-secondary-text">{movie.release_date}</p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
