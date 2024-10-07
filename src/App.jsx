@@ -1,13 +1,15 @@
-import { BrowserRouter as Router } from 'react-router-dom'
-import MainApp from './MainApp'
-
+import { BrowserRouter as Router } from "react-router-dom";
+import MainApp from "./MainApp";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   return (
-    <Router>
-      <MainApp />
-    </Router>
-  )
+    <UserProvider>
+      <Router>
+        <MainApp />
+      </Router>
+    </UserProvider>
+  );
 }
 
-export default App
+export default App;

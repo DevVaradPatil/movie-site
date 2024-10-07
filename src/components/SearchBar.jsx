@@ -93,7 +93,7 @@ const SearchBar = () => {
         onChange={handleInputChange}
       />
       <IoSearch className="text-xl" />
-      {showDropdown && searchResult.length > 0 && (
+      {showDropdown && searchResult && searchResult.length > 0 && (
         <div className="absolute top-10 mt-1 rounded-md left-0 w-full flex flex-col justify-center items-center gap-3 bg-gray-700/50 backdrop-blur-sm z-50 py-3">
           {searchResult.slice(0, 8).map((movie, index) => {
             const genre = genreMap[movie.genre_ids[0]] || "Movie";

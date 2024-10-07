@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ image, title, year, rating }) => {
+const Card = ({ image, title, year, rating, isSeries }) => {
   const rating_percent = Math.round(rating * 10);
 
   // Determine the color based on the rating percentage
@@ -15,7 +15,7 @@ const Card = ({ image, title, year, rating }) => {
   }
 
   return (
-    <Link to={`/movie/${title}`} className="w-48 mb-8 transition-all duration-200 cursor-pointer hover:scale-105">
+    <Link to={isSeries ? `/series/${title}` : `/movie/${title}`} className="w-48 mb-8 transition-all duration-200 cursor-pointer hover:scale-105">
       <div
         className="w-[170px] h-[240px] relative rounded-md"
         style={{

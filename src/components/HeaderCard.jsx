@@ -27,7 +27,7 @@ const genreMap = {
   37: "Western",
 };
 
-const HeaderCard = ({ title, desc, rating, backdropUrl, date, genreId }) => {
+const HeaderCard = ({ title, desc, rating, backdropUrl, date, genreId , isSeries}) => {
   const year = date.split("-")[0];
   const month = date.split("-")[1];
   const genre = genreMap[genreId] || "Movie";
@@ -47,7 +47,7 @@ const HeaderCard = ({ title, desc, rating, backdropUrl, date, genreId }) => {
   }
 
   return (
-    <Link to={`/movie/${title}`} className="w-full relative rounded-[42px] flex justify-center items-center overflow-hidden">
+    <Link to={isSeries ? `/series/${title}` : `/movie/${title}`} className="w-full relative rounded-[42px] flex justify-center items-center overflow-hidden">
       <img
         src={`https://image.tmdb.org/t/p/original/${backdropUrl}`}
         alt=""

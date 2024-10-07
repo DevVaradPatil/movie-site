@@ -62,6 +62,7 @@ const CategoryList = ({ movies, title }) => {
                   title={movie.name}
                   year={movie.first_air_date}
                   rating={movie.vote_average}
+                  isSeries={true}
                 />
               </div>
             ))}

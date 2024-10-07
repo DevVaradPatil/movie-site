@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // To get the movie ID from the URL
 import { IoCalendarNumber, IoFilm } from "react-icons/io5";
 import { FaStar, FaRegStar, FaStarHalfStroke } from "react-icons/fa6";
-import { searchMoviesByTitle } from "../utils/api";
+import { searchMoviesByTitle, searchSeriesByTitle } from "../utils/api";
 import { TbRating18Plus } from "react-icons/tb";
 import { MdOutlineChildCare } from "react-icons/md";
 import { IoIosHeart } from "react-icons/io";
 import Loader from "../components/Loader";
-import { UserContext } from "../contexts/UserContext"; // Import UserContext
+import { UserContext } from "../contexts/UserContext"; 
 import toast from "react-hot-toast";
 
 const genreMap = {
@@ -32,7 +32,7 @@ const genreMap = {
   37: "Western",
 };
 
-const MovieDetails = () => {
+const SeriesDetails = () => {
   const { title } = useParams(); // Get movie ID from the URL
   const [movie, setMovie] = useState(null); // To store fetched movie details
   const [loading, setLoading] = useState(true); // Loading state
@@ -53,7 +53,7 @@ const MovieDetails = () => {
     // Fetch the movie details by ID when component mounts
     const fetchMovie = async () => {
       try {
-        const movieData = await searchMoviesByTitle(title);
+        const movieData = await searchSeriesByTitle(title);
         setMovie(movieData[0]);
 
         setLoading(false);
@@ -230,4 +230,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default SeriesDetails;

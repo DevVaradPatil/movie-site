@@ -73,6 +73,7 @@ const Header = () => {
                 rating={newseries.vote_average}
                 backdropUrl={newseries.backdrop_path}
                 genreId={newseries.genre_ids[0]}
+                isSeries={true}
               />
             </div>
           ))}
