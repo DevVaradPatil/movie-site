@@ -36,18 +36,18 @@ const SeriesDetails = () => {
   const { title } = useParams(); // Get movie ID from the URL
   const [movie, setMovie] = useState(null); // To store fetched movie details
   const [loading, setLoading] = useState(true); // Loading state
-  const { user, favorites, addFavorite } = useContext(UserContext);
+  const { user, favoriteSeries, addFavorite, removeFavorite } = useContext(UserContext);
   const [isFavorite, setIsFavorite] = useState(false);
 
   // Check if the movie is already in favorites
   useEffect(() => {
-    console.log("Favourites", favorites);
-    if (favorites.some((fav) => fav.title === title)) {
+    console.log("Favourites", favoriteSeries);
+    if (favoriteSeries.some((fav) => fav.name === title)) {
       setIsFavorite(true);
     } else {
       setIsFavorite(false);
     }
-  }, [favorites, title]);
+  }, [favoriteSeries, title]);
 
   useEffect(() => {
     // Fetch the movie details by ID when component mounts
@@ -102,51 +102,47 @@ const SeriesDetails = () => {
     }
   }
 
-  // Function to handle "Add to Favourites"
-  const handleAddToFavourites = async () => {
-    if (!user) {
-      toast.error("You need to be logged in to add movies to favourites!");
-      return;
-    }
+// Function to handle "Add to Favourites"
+const handleAddToFavourites = async () => {
+  if (!user) {
+    toast.error("You need to be logged in to add series to favourites!");
+    return;
+  }
 
-    try {
-      // Check if the movie is already a favorite
-      const isAlreadyFavorite = favorites.some(
-        (fav) => fav.title === movie.title
-      );
+
+  try {
+    if(favoriteSeries.lenght > 0){
+      const isAlreadyFavorite = favoriteSeries.some((fav) => fav.name === title);
       if (isAlreadyFavorite) {
-        toast.error("This movie is already in your favourites.");
+        toast.error("This series is already in your favourites.");
         return;
       }
-
-      // Add movie to favorites using context method
-      await addFavorite(movie);
-      toast.success("Movie added to favourites!", {
-        icon: "❤️",
-      });
-    } catch (error) {
-      console.error("Error adding movie to favourites:", error);
-      toast.error("Failed to add movie to favourites.");
-    }
-  };
-
-  // Remove the movie from favorites
-  const removeFromFavorites = async () => {
-    if (!user) {
-      alert("You need to be logged in to remove favorites.");
-      return;
     }
 
-    try {
-      // Use context method to remove from favorites
-      await removeFavorite(movie);
+    await addFavorite(movie, 'series'); // Specify the type as 'series'
+    toast.success("Series added to favourites!", {
+      icon: "❤️",
+    });
+  } catch (error) {
+    toast.error("Failed to add series to favourites.");
+  }
+};
 
-      setIsFavorite(false); // Unmark the movie as favorite
-      toast.success("Removed from favorites!");
-    } catch (error) {
-      toast.error("Error removing movie from favorites");
-    }
-  };
+// Remove the series from favorites
+const removeFromFavorites = async () => {
+  if (!user) {
+    alert("You need to be logged in to remove favorites.");
+    return;
+  }
+
+  try {
+    await removeFavorite(series, 'series'); // Specify the type as 'series'
+    setIsFavorite(false); 
+    toast.success("Removed from favorites!");
+  } catch (error) {
+    toast.error("Error removing series from favorites");
+  }
+};
 
   return (
     <div

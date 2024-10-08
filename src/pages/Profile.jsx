@@ -6,14 +6,16 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 const Profile = () => {
-  const { user, favorites, setUser, setFavorites } = useContext(UserContext);
+  const { user, favorites, favoriteSeries, setUser, setFavorites, setFavoriteSeries } = useContext(UserContext); // Include favoriteSeries
   const navigate = useNavigate();
+
   // Handle logout functionality
   const handleLogout = async () => {
     try {
       await auth.signOut();
       setUser(null);
       setFavorites([]); // Clear favorites on logout
+      setFavoriteSeries([]); // Clear series on logout
       toast.success("Logged out successfully!");
       navigate('/login');
     } catch (error) {
@@ -23,9 +25,9 @@ const Profile = () => {
 
   return (
     <div className="mx-auto p-4 px-10 bg-primary-bg w-full text-white"
-    style={{
-      minHeight: "calc(100vh - 74px)",
-    }}
+      style={{
+        minHeight: "calc(100vh - 74px)",
+      }}
     >
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Profile</h2>
@@ -38,9 +40,10 @@ const Profile = () => {
       </div>
 
       <div className="mb-6">
-        <h3 className="text-lg font-semibold">Email: {user}</h3>
+        <h3 className="text-xl font-semibold">Email: {user}</h3>
       </div>
 
+      {/* Favourite Movies Section */}
       <div>
         <h3 className="text-lg font-semibold mb-4 mt-10">Your Favourite Movies</h3>
         <div className="flex justify-start items-center gap-10 flex-wrap">
@@ -56,6 +59,26 @@ const Profile = () => {
             ))
           ) : (
             <p>No favorite movies added yet!</p>
+          )}
+        </div>
+      </div>
+
+      {/* Favourite Series Section */}
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Your Favourite Series</h3>
+        <div className="flex justify-start items-center gap-10 flex-wrap">
+          {favoriteSeries && favoriteSeries.length > 0 ? (
+            favoriteSeries.map((series) => (
+              <Card
+                key={series.id}
+                image={`https://image.tmdb.org/t/p/w500/${series.poster_path}`}
+                title={series.name} // Use series name for series
+                year={series.first_air_date} // Use first_air_date for series
+                rating={series.vote_average}
+              />
+            ))
+          ) : (
+            <p>No favorite series added yet!</p>
           )}
         </div>
       </div>
