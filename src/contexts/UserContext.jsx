@@ -8,6 +8,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(localStorage.getItem('userEmail')); // Initialize with localStorage value
   const [favorites, setFavorites] = useState([]); // New state for favorite movies
+  const [favoriteSeries, setFavoriteSeries] = useState([])
 
   // Function to save favorites to localStorage
   const saveFavoritesToLocalStorage = (favorites) => {

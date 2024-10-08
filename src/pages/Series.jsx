@@ -4,6 +4,7 @@ import { getNowPlayingMovies, getOnTheAirSeries, getPopularMovies, getPopularSer
 import CardContainer from '../components/CardContainer';
 import HeaderForSeries from '../components/HeaderForSeries';
 import CategoryListSeries from '../components/CategoryListSeries';
+import Loader from '../components/Loader';
 
 
 const Series = () => {
@@ -31,18 +32,24 @@ const Series = () => {
     <div className='bg-primary-bg h-full min-h-screen text-primary-text'>
       <HeaderForSeries/>
       {
-        onTheAirSeries && (
+        onTheAirSeries.length > 0 ? (
           <CategoryListSeries title={"On the Air Series"} movies={onTheAirSeries}/>
+        ) : (
+          <Loader/>
         )
       }
       {
-        popularSeries && (
+        popularSeries.length > 0 ? (
           <CategoryListSeries title={"Popular Series"} movies={popularSeries}/>
+        ) : (
+          <Loader/>
         )
       }
       {
-        topRatedSeries && (
+        topRatedSeries.length > 0 ? (
           <CategoryListSeries title={"Top Rated Series"} movies={topRatedSeries}/>
+        ) : (
+          <Loader/>
         )
       }
     </div>

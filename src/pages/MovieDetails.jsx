@@ -41,8 +41,9 @@ const MovieDetails = () => {
 
   // Check if the movie is already in favorites
   useEffect(() => {
-    console.log("Favourites", favorites);
     if (favorites.some((fav) => fav.title === title)) {
+      setIsFavorite(true);
+    } else if (favorites.some((fav) => fav.name === title)) {
       setIsFavorite(true);
     } else {
       setIsFavorite(false);

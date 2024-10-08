@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import HeaderCard from "./HeaderCard";
 import { getAiringSeries, getNowPlayingMovies } from "../utils/api";
 import { NextArrow, PrevArrow } from "./Arrows";
+import Loader from "./Loader";
 
 const Header = () => {
   var settings = {
@@ -63,7 +64,7 @@ const Header = () => {
   return (
     <div className="w-full h-full py-10">
       <Slider {...settings}>
-        {series &&
+        {series.length > 0 ? (
           series.map((newseries, index) => (
             <div className="px-5" key={index}>
               <HeaderCard
@@ -76,7 +77,10 @@ const Header = () => {
                 isSeries={true}
               />
             </div>
-          ))}
+          ))
+        ) : (
+          <Loader />
+        )}
       </Slider>
     </div>
   );

@@ -22,7 +22,11 @@ const Profile = () => {
   };
 
   return (
-    <div className="mx-auto p-4 px-10 bg-primary-bg w-full min-h-screen text-white">
+    <div className="mx-auto p-4 px-10 bg-primary-bg w-full text-white"
+    style={{
+      minHeight: "calc(100vh - 74px)",
+    }}
+    >
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Profile</h2>
         <button
