@@ -3,7 +3,8 @@ import React, { useContext, useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import back from '../assets/backgroundImage.png';
-import logo from '../assets/net-logo.png';
+import logo from '../assets/netflix.png'
+
 import { NavLink, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { UserContext } from '../contexts/UserContext';
@@ -38,11 +39,11 @@ const Signup = () => {
   return (
     <div className='h-screen flex justify-center items-center bg-center w-full relative' style={{ backgroundImage: `url(${back})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
       <div className='absolute w-full h-full top-0 left-0 z-10 bg-black/60 flex flex-col justify-center items-center'>
-        <div className='w-full flex items-center absolute top-5 z-20'>
-          <img className='w-[170px] ml-[10%]' src={logo} alt="" />
-        </div>
 
         <div className='bg-primary-bg w-[90%] max-w-md p-10 rounded-md z-20'>
+        <div className='flex justify-center items-center w-full '>
+          <img src={logo} alt="" className='w-24 h-24 mb-5' />
+         </div>
           <div className='text-primary-text text-3xl ml font-medium text-center'>
             Create your account
           </div>
